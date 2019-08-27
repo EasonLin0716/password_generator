@@ -6,7 +6,7 @@ function sample(array) {
 
 
 // define generatePassword function
-function generatePassword() {
+function generatePassword(options) {
   // define things user might want
   const lowerCaseLetters = 'abcdefghijklmnopqrstuvwxyz'
   const upperCaseLetters = lowerCaseLetters.toUpperCase()
@@ -48,6 +48,11 @@ function generatePassword() {
     )
   }
 
+  // return error notice if collection is empty
+  if (collection.length === 0) {
+    return 'There is no valid characters in your selection.'
+  }
+
   // start generating password
   let password = ''
   for (let i = 0; i < options.length; i++) {
@@ -58,5 +63,8 @@ function generatePassword() {
   return password
 }
 
+// export generatePassword function for other files to use
+module.exports = generatePassword
+
 // invoke generatePassword function
-// console.log(generatePassword()
+// console.log(generatePassword())
